@@ -10,11 +10,17 @@ function App() {
   return (
     <div className="App">
       <div>
+        <nav className="nav">
+          <NavLink to="/api/friends"> My Friends (Protected) </NavLink>
+          <NavLink to="/api/login"> Login </NavLink>
+        </nav>
         <Home />
       </div>
       <section className="Routes">
       <Switch>
-      <Route component={Login} />
+        <Route exact path="/api/friends" />
+        <Route exact path="/api/login" component={Login} />
+        <Route path="/" component={Login} />
       </Switch>
       </section>
 
