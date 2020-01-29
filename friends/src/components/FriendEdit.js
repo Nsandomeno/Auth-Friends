@@ -17,7 +17,7 @@ useEffect(() => {
             setFriend({
                 name: response.data.name,
                 age: response.data.age,
-                email: response.data.email
+                email: response.data.email 
             })
 
         })
@@ -37,13 +37,13 @@ const clear = (event) => {
 
 const handleChange = (event) => {
     setFriend({
-        [event.target.name]: event.target.value
+        ...friend, [event.target.name]: event.target.value
     })
 }
 
-const saveEdit = (event, id, editInfo) => {
+const saveEdit = (event, id) => {
     event.preventDefault();
-    axiosWithAuth().put(`/api/friends/${id}`, editInfo)
+    axiosWithAuth().put(`/api/friends/${id}`, friend)
         .then((response) => {
             console.log("This is the respone from save edit:", response)
             props.history.push('/api/friends')
@@ -84,7 +84,7 @@ const saveEdit = (event, id, editInfo) => {
                         />
                     </label>
             </form>
-            <button onClick={(event) => saveEdit(event, props.match.params.id, friend)}>
+            <button onClick={(event) => saveEdit(event, props.match.params.id)}>
                 Save
             </button>
             <button onClick={clear}>
