@@ -6,6 +6,7 @@ import './App.css';
 import Login from './components/login.js';
 import Home from './components/home.js';
 import FriendsDisplay from './components/friendsdisplay.js';
+import PrivateRoute from './components/PrivateRoute.js';
 
 function App() {
   return (
@@ -19,7 +20,7 @@ function App() {
       </div>
       <section className="Routes">
       <Switch>
-        <Route exact path="/api/friends" component={FriendsDisplay} />
+        <PrivateRoute exact path="/api/friends" component={FriendsDisplay} />
         <Route exact path="/api/login" component={Login} />
         <Route path="/" component={Login} />
       </Switch>
