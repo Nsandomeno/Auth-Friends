@@ -44,13 +44,10 @@ class FriendsDisplay extends React.Component {
         });
     }
 
-    // componentDidUpdate() {
-    //     console.log("cdu")
-    // }
 
     addFriend = () => {
         // event.preventDefault()
-        axiosWithAuth().post('api/friends', this.state.friend)
+        axiosWithAuth().post('/api/friends', this.state.friend)
             .then((response) => {
                 console.log("This is response from add friend", response)
                 this.setState({
@@ -68,6 +65,7 @@ class FriendsDisplay extends React.Component {
                 console.log("This is an error from add friend:", error)
             })
     }
+
 
     handleChange = (event) => {
         this.setState({
@@ -124,7 +122,7 @@ class FriendsDisplay extends React.Component {
                 {
                     this.state.friends.map((friend) => {
                         return (
-                            <FriendCard friend={friend} key={friend.id} className="friendCard" />
+                            <FriendCard friend={friend} key={friend.id} id={friend.id} className="friendCard" />
                         )
                     })
                 }
